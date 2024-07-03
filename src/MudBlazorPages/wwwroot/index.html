@@ -9,7 +9,7 @@
     <!-- Adapted from https://stackoverflow.com/a/69769086/8435941 -->
     <script>
         var baseTag = document.createElement("base");
-        var appRoot = "/gib/";
+        var appRoot = "/test/";
         var path = document.location.pathname;
         baseTag.href = (path.indexOf(appRoot) === 0 || path + "/" === appRoot) ? appRoot : "/";
         document.head.appendChild(baseTag);
@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="GIB.styles.css" rel="stylesheet" />
-    <link rel="apple-touch-icon" sizes="512x512" href="/gib/icon-512.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/gib/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
 </head>

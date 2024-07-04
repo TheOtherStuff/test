@@ -1,18 +1,18 @@
 ﻿@page "/"
 @using System.Web
+@using GIB.Components
 @inject NavigationManager NavigationManager
 
 <PageTitle>Redirect</PageTitle>
 
+@if (!string.IsNullOrWhiteSpace(this.Url))
+{
+    <Centered>
+        <iframe src="@Url" frameborder="0" style="overflow:hidden;height:100vh;width:100vw;"></iframe>
+    </Centered>
+}
+
 @code {
     [SupplyParameterFromQuery(Name = "url")]
     public string? Url { get; set; }
-
-    protected override void OnInitialized()
-    {
-        if (!string.IsNullOrWhiteSpace(this.Url))
-        {
-            NavigationManager.NavigateTo(HttpUtility.UrlDecode(this.Url));
-        }
-    }
 }

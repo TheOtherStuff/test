@@ -6,7 +6,7 @@
 @if (!string.IsNullOrWhiteSpace(this.Url))
 {
     <Centered>
-        <iframe src="@Url" frameborder="0" style="overflow:hidden;height:100vh;width:100vw;"></iframe>
+        <iframe src="@(HttpUtility.UrlDecode(Url))" frameborder="0" style="overflow:hidden;height:100vh;width:100vw;"></iframe>
     </Centered>
 }
 

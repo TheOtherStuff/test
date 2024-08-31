@@ -1,0 +1,40 @@
+﻿@page "/"
+@using System.Web
+@using Test.Components
+@inject NavigationManager NavigationManager
+
+@if (!string.IsNullOrWhiteSpace(this.Url))
+{
+    <Centered>
+        <iframe src="@(HttpUtility.UrlDecode(Url))" frameborder="0" style="overflow:hidden;height:100vh;width:100vw;"></iframe>
+    </Centered>
+}
+
+<MudLink Href="@GetGitHubUrl()" Target="_blank">@GetGitHubUrl()</MudLink>
+
+@code {
+    [SupplyParameterFromQuery(Name = "url")]
+    public string? Url { get; set; }
+
+    private string GetGitHubUrl()
+    {
+        const string DefaultGitHubUrl = "https://github.com/MudBlazorGitHubPages/mudblazorgithubpages.github.io";
+
+        var baseUrl = new Uri(NavigationManager.BaseUri);
+
+        if (baseUrl.Scheme == "https")
+        {
+            if (baseUrl.Host.EndsWith(".github.io"))
+            {
+
+                var organizationName = baseUrl.Host.Replace(".github.io", string.Empty);
+                var path = baseUrl.AbsolutePath.Replace("/", string.Empty);
+                var repositoryName = path != string.Empty ? path : $"{organizationName}.github.io";
+                    
+                return $"https://github.com/{organizationName}/{repositoryName}";
+            }
+        }
+
+        return DefaultGitHubUrl;
+    }
+}

@@ -10,7 +10,10 @@
     </Centered>
 }
 
-<MudLink Href="@GetGitHubUrl()" Target="_blank">@GetGitHubUrl()</MudLink>
+<MudStack Spacing="3">
+    <MudLink Href="@GetGitHubUrl()" Target="_blank">@GetGitHubUrl()</MudLink>
+    <MudText>Version @this.GetType().Assembly.GetName().Version?.ToString(3)</MudText>
+</MudStack>
 
 @code {
     [SupplyParameterFromQuery(Name = "url")]
